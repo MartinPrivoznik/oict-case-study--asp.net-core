@@ -26,6 +26,7 @@ public static class RestApiApplicationBuilderExtensions
                     $"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
         });
 
+        app.MapHealthChecks("/health").ShortCircuit();
         app.MapControllers();
 
         return app;

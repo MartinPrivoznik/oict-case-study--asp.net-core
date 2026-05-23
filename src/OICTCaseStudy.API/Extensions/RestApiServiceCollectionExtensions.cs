@@ -10,7 +10,8 @@ public static class RestApiServiceCollectionExtensions
         IConfigurationManager configuration)
     {
         services.Configure<ApiOptions>(configuration.GetSection(ApiOptions.SectionName));
-        
+
+        services.AddHealthChecks();
         services.AddControllers();
 
         services.AddApiVersioning(options =>
