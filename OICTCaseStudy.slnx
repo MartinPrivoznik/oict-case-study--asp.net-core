@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/ApiClient/">
+    <Project Path="src/ApiClient/OICTCaseStudy.ApiClient.Litacka/OICTCaseStudy.ApiClient.Litacka.csproj" />
+  </Folder>
+  <Folder Name="/Lib/">
+    <Project Path="src/Lib/OICTCaseStudy.Lib.HttpClient/OICTCaseStudy.Lib.HttpClient.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="compose.yaml" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/OICTCaseStudy.Tests/OICTCaseStudy.Tests.csproj" />
+  </Folder>
+  <Project Path="src/OICTCaseStudy.Api/OICTCaseStudy.Api.csproj" />
+  <Project Path="src/OICTCaseStudy.App/OICTCaseStudy.App.csproj" />
+</Solution>

@@ -1,0 +1,7 @@
+﻿services:
+  oictcasestudy:
+    image: oictcasestudy
+    build:
+      context: .
+      dockerfile: OICTCaseStudy/Dockerfile
+
