@@ -1,4 +1,5 @@
-﻿using Asp.Versioning;
+﻿using System.Reflection;
+using Asp.Versioning;
 using OICTCaseStudy.Api.Configuration;
 using OICTCaseStudy.Api.OpenApi;
 
@@ -30,7 +31,7 @@ public static class RestApiServiceCollectionExtensions
 
         services.AddEndpointsApiExplorer();
 
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(opt => { opt.IncludeXmlComments(Assembly.GetExecutingAssembly()); });
         services.ConfigureOptions<SwaggerGenNamedOptions>();
 
         services.AddControllers();

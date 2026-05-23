@@ -32,7 +32,7 @@ public class ExceptionHandlingMiddleware(RequestDelegate next)
                 new ApiResponse<object>
                 {
                     Success = false,
-                    Message = "Method not yet implemented."
+                    Message = "An unexpected error occurred."
                 }, ex);
         }
     }
