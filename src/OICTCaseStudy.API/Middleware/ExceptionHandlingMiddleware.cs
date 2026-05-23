@@ -13,21 +13,39 @@ public class ExceptionHandlingMiddleware(RequestDelegate next)
         {
             await next(context);
         }
+        catch (NotImplementedException ex)
+        {
+            await WriteApiResponse(
+                context,
+                StatusCodes.Status501NotImplemented,
+                new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Method not yet implemented."
+                }, ex);
+        }
         catch (Exception ex)
         {
-            if (context.Response.HasStarted) throw;
-
-            context.Response.Clear();
-            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            context.Response.ContentType = "application/json";
-
-            var payload = new ApiResponse<object>
-            {
-                Success = false,
-                Message = "An unexpected error occurred while processing the request."
-            };
-
-            await context.Response.WriteAsync(JsonSerializer.Serialize(payload, JsonOptions));
+            await WriteApiResponse(
+                context,
+                StatusCodes.Status500InternalServerError,
+                new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Method not yet implemented."
+                }, ex);
         }
+    }
+
+    private async Task WriteApiResponse(HttpContext context, int status, ApiResponse<object> payload,
+        Exception ex)
+    {
+        if (context.Response.HasStarted) throw ex;
+
+        context.Response.Clear();
+        context.Response.StatusCode = status;
+        context.Response.ContentType = "application/json";
+
+        await context.Response.WriteAsync(JsonSerializer.Serialize(payload, JsonOptions));
     }
 }

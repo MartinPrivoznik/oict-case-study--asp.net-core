@@ -3,13 +3,7 @@ using OICTCaseStudy.App;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAppServices();
-builder.Services.AddRestApiServices(builder.Configuration); 
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddRestApiServices(builder.Configuration);
 
 var app = builder.Build();
 

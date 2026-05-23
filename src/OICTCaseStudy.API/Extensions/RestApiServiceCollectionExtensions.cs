@@ -32,7 +32,10 @@ public static class RestApiServiceCollectionExtensions
 
         services.AddSwaggerGen();
         services.ConfigureOptions<SwaggerGenNamedOptions>();
-        
+
+        services.AddControllers();
+        services.AddOpenApi();
+
         return services;
     }
 }
