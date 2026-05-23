@@ -20,4 +20,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\OICTCaseStudy.App\OICTCaseStudy.App.csproj" />
+    </ItemGroup>
+
 </Project>
