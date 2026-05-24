@@ -1,6 +1,0 @@
-@OICTCaseStudy.Api_HostAddress = http://localhost:5092
-
-GET {{OICTCaseStudy.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
