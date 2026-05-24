@@ -30,7 +30,8 @@ public static class RestApiApplicationBuilderExtensions
         });
 
         app.MapHealthChecks("/health")
-            .ShortCircuit();
+            .ShortCircuit()
+            .AllowAnonymous();
 
         app.MapControllers();
 

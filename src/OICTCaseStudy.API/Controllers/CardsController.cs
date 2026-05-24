@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OICTCaseStudy.Api.Core;
 using OICTCaseStudy.App.Dto;
@@ -7,6 +8,7 @@ using OICTCaseStudy.App.Query.GetCardValidityById;
 
 namespace OICTCaseStudy.Api.Controllers;
 
+[Authorize]
 [ApiVersion(1)]
 public class CardsController(ISender sender) : BaseApiController
 {

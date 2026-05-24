@@ -6,4 +6,5 @@ public sealed class ApiOptions
 
     public string Name { get; set; } = "Api";
     public string Culture { get; set; } = "cs-CZ";
+    public string ApiKey { get; set; } = string.Empty;
 }

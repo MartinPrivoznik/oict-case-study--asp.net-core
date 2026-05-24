@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.OpenApi;
+using OICTCaseStudy.Api.Authentication;
 using OICTCaseStudy.Api.Configuration;
 using OICTCaseStudy.Api.OpenApi;
 
@@ -29,9 +32,28 @@ public static class RestApiServiceCollectionExtensions
                 options.SubstituteApiVersionInUrl = true;
             });
 
+        services.AddAuthentication(ApiKeyAuthenticationHandler.SchemeName)
+            .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>(
+                ApiKeyAuthenticationHandler.SchemeName, _ => { });
+        services.AddAuthorization();
+
         services.AddEndpointsApiExplorer();
 
-        services.AddSwaggerGen(opt => { opt.IncludeXmlComments(Assembly.GetExecutingAssembly()); });
+        services.AddSwaggerGen(opt =>
+        {
+            opt.IncludeXmlComments(Assembly.GetExecutingAssembly());
+            opt.AddSecurityDefinition(ApiKeyAuthenticationHandler.SchemeName, new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.ApiKey,
+                In = ParameterLocation.Header,
+                Name = "X-Api-Key",
+                Description = "API key passed in the X-Api-Key header"
+            });
+            opt.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
+            {
+                [new OpenApiSecuritySchemeReference(ApiKeyAuthenticationHandler.SchemeName, doc)] = []
+            });
+        });
         services.ConfigureOptions<SwaggerGenNamedOptions>();
 
         services.AddControllers();
