@@ -7,6 +7,10 @@ public class LitactkaHttpClient(System.Net.Http.HttpClient httpClient)
     public async Task<T> Get<T>(string url, CancellationToken cancellationToken = default)
     {
         var response = await httpClient.GetAsync(url, cancellationToken);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            throw new HttpRequestException(null, null, System.Net.HttpStatusCode.NotFound);
+
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync(cancellationToken);
         return JsonSerializer.Deserialize<T>(content) ??

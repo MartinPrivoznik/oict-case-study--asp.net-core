@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OICTCaseStudy.Api.Core;
 using OICTCaseStudy.App.Dto;
+using OICTCaseStudy.App.Exceptions;
 using OICTCaseStudy.App.Query.GetCardValidityById;
 
 namespace OICTCaseStudy.Api.Controllers;
@@ -24,6 +25,10 @@ public class CardsController(ISender sender) : BaseApiController
         {
             var cardValidity = await sender.Send(new GetCardValidityByIdQuery(cardNumber), cancellationToken);
             return SuccessResponse(cardValidity);
+        }
+        catch (CardNotFoundException ex)
+        {
+            return NotFoundResponse(ex.Message);
         }
         catch (InvalidOperationException ex)
         {
