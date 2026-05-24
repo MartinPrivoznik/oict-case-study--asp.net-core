@@ -4,5 +4,5 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 OICTCaseStudy.sln.DotSettings.user
-.idea/.idea.OICTCaseStudy/Docker/**
+.idea
 .DS_Store
