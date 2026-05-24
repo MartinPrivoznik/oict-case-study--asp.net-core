@@ -19,7 +19,8 @@ public class ApiKeyAuthenticationHandler(
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         if (string.IsNullOrEmpty(apiOptions.Value.ApiKey))
-            return Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(new ClaimsPrincipal(), SchemeName)));
+            return Task.FromResult(AuthenticateResult.Success(
+                new AuthenticationTicket(new ClaimsPrincipal(new ClaimsIdentity(SchemeName)), SchemeName)));
 
         if (!Request.Headers.TryGetValue(HeaderName, out var headerValues))
             return Task.FromResult(AuthenticateResult.NoResult());
