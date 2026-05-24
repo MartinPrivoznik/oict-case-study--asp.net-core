@@ -71,3 +71,9 @@ docker compose up --build
 ```
 
 The API will be available at http://localhost:8080.
+
+## Running the Tests
+
+```bash
+dotnet test tests/OICTCaseStudy.Tests/OICTCaseStudy.Tests.csproj
+```
