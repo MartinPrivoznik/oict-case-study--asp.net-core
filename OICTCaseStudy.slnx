@@ -2,6 +2,7 @@
   <Folder Name="/Solution Items/">
     <File Path="compose.development.yaml" />
     <File Path="compose.yaml" />
+    <File Path="README.md" />
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/OICTCaseStudy.Tests/OICTCaseStudy.Tests.csproj" />
