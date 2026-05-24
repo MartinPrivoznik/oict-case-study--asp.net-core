@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.OpenApi;
-using OICTCaseStudy.Api.Configuration;
+﻿using OICTCaseStudy.Api.Configuration;
 using OICTCaseStudy.Api.Middleware;
 
 namespace OICTCaseStudy.Api.Extensions;
@@ -26,7 +24,9 @@ public static class RestApiApplicationBuilderExtensions
                     $"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
         });
 
-        app.MapHealthChecks("/health").ShortCircuit();
+        app.MapHealthChecks("/health")
+            .ShortCircuit();
+
         app.MapControllers();
 
         return app;
