@@ -1,7 +1,12 @@
-﻿namespace OICTCaseStudy.ApiClient.Litacka.Core.Response;
+﻿using System.Text.Json.Serialization;
+
+namespace OICTCaseStudy.ApiClient.Litacka.Core.Response;
 
 public class CardValidityResponse
 {
-    public DateTime ValidityStart { get; }
-    public DateTime ValidityEnd { get; }
+    [JsonPropertyName("validity_start")]
+    public DateTime ValidityStart { get; init; }
+
+    [JsonPropertyName("validity_end")]
+    public DateTime ValidityEnd { get; init; }
 }

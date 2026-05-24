@@ -1,7 +1,12 @@
-﻿namespace OICTCaseStudy.ApiClient.Litacka.Core.Response;
+﻿using System.Text.Json.Serialization;
+
+namespace OICTCaseStudy.ApiClient.Litacka.Core.Response;
 
 public class CardStateResponse
 {
-    public ulong StateId { get; set; }
-    public string StateDescription { get; set; }
+    [JsonPropertyName("state_id")]
+    public ulong StateId { get; init; }
+
+    [JsonPropertyName("state_description")]
+    public string StateDescription { get; init; } = string.Empty;
 }
