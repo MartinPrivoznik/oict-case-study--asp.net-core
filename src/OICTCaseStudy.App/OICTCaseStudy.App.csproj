@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="14.1.0" />
+        <PackageReference Include="MediatR" Version="14.1.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.8"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OICTCaseStudy.ApiClient.Litacka\OICTCaseStudy.ApiClient.Litacka.csproj"/>
     </ItemGroup>
 
 </Project>
