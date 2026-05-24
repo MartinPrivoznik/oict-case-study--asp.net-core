@@ -32,7 +32,7 @@ public static class LitackaApiClientServiceCollection
                 });
             });
 
-        services.AddScoped<LitackaCardService>();
+        services.AddScoped<ILitackaCardService, LitackaCardService>();
 
         return services;
     }

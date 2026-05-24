@@ -14,3 +14,5 @@ app.UseAuthorization();
 app.UseRestApi();
 
 app.Run();
+
+public partial class Program { }

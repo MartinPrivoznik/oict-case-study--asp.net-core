@@ -4,7 +4,7 @@ using OICTCaseStudy.App.Dto;
 
 namespace OICTCaseStudy.App.Query.GetCardValidityById;
 
-public sealed class GetCardValidityByIdQueryHandler(LitackaCardService litackaCardService)
+public sealed class GetCardValidityByIdQueryHandler(ILitackaCardService litackaCardService)
     : IRequestHandler<GetCardValidityByIdQuery, CardValidityDto>
 {
     public async Task<CardValidityDto> Handle(GetCardValidityByIdQuery request, CancellationToken cancellationToken)

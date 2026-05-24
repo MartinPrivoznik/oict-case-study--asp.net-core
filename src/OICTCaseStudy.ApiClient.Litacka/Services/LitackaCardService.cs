@@ -3,7 +3,7 @@ using OICTCaseStudy.ApiClient.Litacka.HttpClient;
 
 namespace OICTCaseStudy.ApiClient.Litacka.Services;
 
-public class LitackaCardService(LitactkaHttpClient httpClient)
+public class LitackaCardService(LitactkaHttpClient httpClient) : ILitackaCardService
 {
     public Task<CardValidityResponse> RequestCardValidity(ulong cardId, CancellationToken cancellationToken = default)
     {
