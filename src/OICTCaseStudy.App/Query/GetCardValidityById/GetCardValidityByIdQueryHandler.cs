@@ -9,11 +9,12 @@ public sealed class GetCardValidityByIdQueryHandler(LitackaCardService litackaCa
 {
     public async Task<CardValidityDto> Handle(GetCardValidityByIdQuery request, CancellationToken cancellationToken)
     {
-        var cardStateTask = litackaCardService.RequestCardState(request.CardId, cancellationToken);
-        var cardValidityTask = litackaCardService.RequestCardValidity(request.CardId, cancellationToken);
+        var cardStateRequestTask = litackaCardService.RequestCardState(request.CardId, cancellationToken);
+        var cardValidityRequestTask = litackaCardService.RequestCardValidity(request.CardId, cancellationToken);
 
-        await Task.WhenAll(cardStateTask, cardValidityTask);
+        await Task.WhenAll(cardStateRequestTask, cardValidityRequestTask);
 
-        return new CardValidityDto(cardValidityTask.Result.ValidityEnd, cardStateTask.Result.StateDescription);
+        return new CardValidityDto(cardValidityRequestTask.Result.ValidityEnd,
+            cardStateRequestTask.Result.StateDescription);
     }
 }

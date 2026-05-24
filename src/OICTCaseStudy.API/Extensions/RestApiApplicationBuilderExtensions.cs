@@ -1,4 +1,5 @@
-﻿using OICTCaseStudy.Api.Configuration;
+﻿using System.Globalization;
+using OICTCaseStudy.Api.Configuration;
 using OICTCaseStudy.Api.Middleware;
 
 namespace OICTCaseStudy.Api.Extensions;
@@ -9,6 +10,10 @@ public static class RestApiApplicationBuilderExtensions
     {
         var apiOptions = new ApiOptions();
         app.Configuration.GetSection(ApiOptions.SectionName).Bind(apiOptions);
+
+        var culture = new CultureInfo(apiOptions.Culture);
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
 
         app.DescribeApiVersions();
         app.UseMiddleware<ExceptionHandlingMiddleware>();
